@@ -59,9 +59,9 @@ if st.sidebar.button('Plot Distributions'):
 # Prediction
 if st.sidebar.button('Diabetes Prediction Test'):
     if pregnancies == 0 or glucose == 0 or blood_pressure == 0 or skin_thickness == 0 or insulin == 0 or bmi == 0.0 or diabetes_pedigree_function == 0.0 or age == 0:
-        st.sidebar.warning("Please fill in all the fields.")
+        st.sidebar.error("Please fill in all the fields.")
     elif glucose > 200 and blood_pressure > 150:
-        st.sidebar.warning("Please check glucose and blood pressure values, they seem high. Consult a healthcare professional.")
+        st.sidebar.error("Please check glucose and blood pressure values, they seem high. Consult a healthcare professional.")
     else:
         diabetes_prediction = model_diabetes.predict([[pregnancies, glucose, blood_pressure, skin_thickness, insulin, bmi, diabetes_pedigree_function, age]])
         
@@ -69,3 +69,7 @@ if st.sidebar.button('Diabetes Prediction Test'):
             st.sidebar.success('The patient has diabetes')
         else:
             st.sidebar.success('The patient does not have diabetes')
+
+# Footer
+st.markdown("---")
+st.write("Developed with ❤️ by Your Name")
