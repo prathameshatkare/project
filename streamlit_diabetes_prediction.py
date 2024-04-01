@@ -69,7 +69,3 @@ if st.sidebar.button('Diabetes Prediction Test'):
             st.sidebar.success('The patient has diabetes')
         else:
             st.sidebar.success('The patient does not have diabetes')
-
-# Footer
-st.markdown("---")
-st.write("Developed with ❤️ by Your Name")
