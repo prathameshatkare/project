@@ -25,6 +25,28 @@ def save_feedback(feedback):
     feedback_df = pd.DataFrame({'Feedback': [feedback]})
     feedback_df.to_csv('feedback.csv', mode='a', index=False, header=not st.session_state.feedback_saved)
 
+# Home page
+def home_page():
+    st.sidebar.subheader('About')
+    st.sidebar.write('This app predicts the likelihood of diabetes based on various health parameters.')
+
+    # Input fields with validation
+    st.sidebar.subheader('Enter Patient Details')
+    with st.sidebar:
+        pregnancies = st.number_input('Pregnancies', min_value=0, max_value=20, step=1)
+        glucose = st.number_input('Glucose', min_value=0, max_value=300, step=1)
+        blood_pressure = st.number_input('Blood Pressure', min_value=0, max_value=200, step=1)
+        skin_thickness = st.number_input('Skin Thickness', min_value=0, max_value=100, step=1)
+        insulin = st.number_input('Insulin', min_value=0, max_value=1000, step=1)
+        bmi = st.number_input('BMI', min_value=0.0, max_value=60.0, step=0.1)
+        diabetes_pedigree_function = st.number_input('Diabetes Pedigree Function', min_value=0.0, max_value=2.5, step=0.01)
+        age = st.number_input('Age', min_value=0, max_value=120, step=1)
+
+    # Prediction
+    if st.sidebar.button('Diabetes Prediction Test'):
+        result = predict_diabetes(pregnancies, glucose, blood_pressure, skin_thickness, insulin, bmi, diabetes_pedigree_function, age)
+        st.sidebar.write(result)
+
 # Additional Features page
 def additional_features_page():
     st.title('Additional Features')
@@ -63,7 +85,7 @@ def main():
     additional_features_page()
 
     st.sidebar.markdown("---")
-    st.sidebar.write("Developed with ❤️ by Your Name")
+
 
 if __name__ == "__main__":
     main()
