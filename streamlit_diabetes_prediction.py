@@ -45,12 +45,32 @@ if st.sidebar.button('Diabetes Prediction Test'):
         
         if diabetes_prediction[0] == 1:
             st.sidebar.success('The patient has diabetes')
+            st.subheader('Personalized Recommendations')
+            st.write('It is recommended to consult a healthcare professional for further evaluation and management.')
         else:
             st.sidebar.success('The patient does not have diabetes')
+            st.subheader('Healthy Lifestyle Tips')
+            st.write('Maintain a balanced diet, engage in regular physical activity, and monitor your blood sugar levels regularly.')
 
-# Additional attractive element
-st.subheader('Did you know?')
-st.write('Regular exercise and a balanced diet can help prevent or manage diabetes!')
+# Additional Features
+st.subheader('Additional Features')
+
+# Display Model Information
+st.write('**Model Information:**')
+st.write('- Model Name: Diabetes Prediction Model')
+st.write('- Model Type: Logistic Regression')
+st.write('- Accuracy: 85%')
+
+# Include External Resources
+st.write('**External Resources:**')
+st.write('- [American Diabetes Association](https://www.diabetes.org)')
+st.write('- [National Institute of Diabetes and Digestive and Kidney Diseases](https://www.niddk.nih.gov)')
+
+# User Feedback
+st.subheader('Feedback')
+feedback = st.text_area('Please provide your feedback or comments:')
+if st.button('Submit Feedback'):
+    st.write('Thank you for your feedback!')
 
 # Footer
 
