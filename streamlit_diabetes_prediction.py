@@ -69,10 +69,13 @@ def additional_features_page():
 
 # Main function to run the app
 def main():
+    # Set page width to full size
+    st.set_page_config(layout="wide")
+
     home_page()
 
     st.sidebar.markdown("---")
-   
+    
 
     if st.sidebar.button('Additional Features'):
         additional_features_page()
