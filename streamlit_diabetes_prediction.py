@@ -61,12 +61,12 @@ def additional_features_page():
     # Display Model Information
     st.write('**Model Information:**')
     st.write('- Model Name: Diabetes Prediction Model')
-    st.write('- Model Type: Logistic Regression')
+    st.write('- Model Type: Logistic Regression & KNN Algorithm')
     st.write('- Accuracy: 85%')
 
     # Include External Resources
     st.write('**External Resources:**')
-    st.write('- [American Diabetes Association](https://www.diabetes.org)')
+    st.write('- [ Diabetes Association](https://www.diabetes.org)')
     st.write('- [National Institute of Diabetes and Digestive and Kidney Diseases](https://www.niddk.nih.gov)')
 
     # Diabetes Awareness
