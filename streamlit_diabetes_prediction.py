@@ -27,25 +27,32 @@ def save_feedback(feedback):
 
 # Home page
 def home_page():
-    st.sidebar.subheader('About')
-    st.sidebar.write('This app predicts the likelihood of diabetes based on various health parameters.')
+    st.title('Diabetes Prediction')
+    st.markdown("""<style>.reportview-container .main .block-container{padding-top: 0rem !important;background-color:#f0f0f0;}</style>""", unsafe_allow_html=True)
+ 
+    st.sidebar.subheader('Navigation')
+    page = st.sidebar.radio('Go to', ['Home', 'Additional Features'])
 
-    # Input fields with validation
-    st.sidebar.subheader('Enter Patient Details')
-    with st.sidebar:
-        pregnancies = st.number_input('Pregnancies', min_value=0, max_value=20, step=1)
-        glucose = st.number_input('Glucose', min_value=0, max_value=300, step=1)
-        blood_pressure = st.number_input('Blood Pressure', min_value=0, max_value=200, step=1)
-        skin_thickness = st.number_input('Skin Thickness', min_value=0, max_value=100, step=1)
-        insulin = st.number_input('Insulin', min_value=0, max_value=1000, step=1)
-        bmi = st.number_input('BMI', min_value=0.0, max_value=60.0, step=0.1)
-        diabetes_pedigree_function = st.number_input('Diabetes Pedigree Function', min_value=0.0, max_value=2.5, step=0.01)
-        age = st.number_input('Age', min_value=0, max_value=120, step=1)
+    if page == 'Home':
+        st.sidebar.subheader('About')
+        st.sidebar.write('This app predicts the likelihood of diabetes based on various health parameters.')
 
-    # Prediction
-    if st.sidebar.button('Diabetes Prediction Test'):
-        result = predict_diabetes(pregnancies, glucose, blood_pressure, skin_thickness, insulin, bmi, diabetes_pedigree_function, age)
-        st.sidebar.write(result)
+        # Input fields with validation
+        st.sidebar.subheader('Enter Patient Details')
+        with st.sidebar:
+            pregnancies = st.number_input('Pregnancies', min_value=0, max_value=20, step=1)
+            glucose = st.number_input('Glucose', min_value=0, max_value=300, step=1)
+            blood_pressure = st.number_input('Blood Pressure', min_value=0, max_value=200, step=1)
+            skin_thickness = st.number_input('Skin Thickness', min_value=0, max_value=100, step=1)
+            insulin = st.number_input('Insulin', min_value=0, max_value=1000, step=1)
+            bmi = st.number_input('BMI', min_value=0.0, max_value=60.0, step=0.1)
+            diabetes_pedigree_function = st.number_input('Diabetes Pedigree Function', min_value=0.0, max_value=2.5, step=0.01)
+            age = st.number_input('Age', min_value=0, max_value=120, step=1)
+
+        # Prediction
+        if st.sidebar.button('Diabetes Prediction Test'):
+            result = predict_diabetes(pregnancies, glucose, blood_pressure, skin_thickness, insulin, bmi, diabetes_pedigree_function, age)
+            st.sidebar.write(result)
 
 # Additional Features page
 def additional_features_page():
@@ -82,10 +89,11 @@ def main():
     # Set page width to full size
     st.set_page_config(layout="wide")
 
-    additional_features_page()
+    home_page()
 
     st.sidebar.markdown("---")
-
+    if st.sidebar.button('Additional Features'):
+        additional_features_page()
 
 if __name__ == "__main__":
     main()
