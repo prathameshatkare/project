@@ -29,7 +29,7 @@ def save_feedback(feedback):
 def home_page():
     st.title('Diabetes Prediction')
     st.markdown("""<style>.reportview-container .main .block-container{padding-top: 0rem !important;}</style>""", unsafe_allow_html=True)
-    st.markdown('<h1 style="text-align: center;">Diabetes Prediction</h1>', unsafe_allow_html=True)
+   
     st.sidebar.subheader('Navigation')
     page = st.sidebar.radio('Go to', ['Home', 'Additional Features'])
 
