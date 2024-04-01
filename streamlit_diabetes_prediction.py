@@ -1,39 +1,13 @@
 import pickle
 import streamlit as st
-import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
+import numpy as np
+import time
 
 # Load model
 model_diabetes = pickle.load(open('model_diabetes.sav', 'rb'))
 
 # Web Title
 st.title('Diabetes Prediction')
-
-# Define a function for plotting feature distributions
-def plot_distributions():
-    # Sample data to display default distributions
-    data = {
-        'Pregnancies': [0],
-        'Glucose': [0],
-        'Blood Pressure': [0],
-        'Skin Thickness': [0],
-        'Insulin': [0],
-        'BMI': [0.0],
-        'Diabetes Pedigree Function': [0.0],
-        'Age': [0]
-    }
-    df = pd.DataFrame(data)
-
-    fig, axes = plt.subplots(nrows=2, ncols=4, figsize=(18, 10))
-    fig.suptitle('Feature Distributions', fontsize=20)
-
-    for i, column in enumerate(df.columns):
-        sns.histplot(df[column], ax=axes[i//4, i%4], kde=True, bins=20)
-        axes[i//4, i%4].set_title(column)
-
-    plt.tight_layout()
-    st.pyplot(fig)
 
 # Sidebar
 st.sidebar.subheader('About')
@@ -51,10 +25,14 @@ with st.sidebar:
     diabetes_pedigree_function = st.number_input('Diabetes Pedigree Function', min_value=0.0, max_value=2.5, step=0.01)
     age = st.number_input('Age', min_value=0, max_value=120, step=1)
 
-# Show feature distributions
-st.sidebar.subheader('Feature Distributions')
-if st.sidebar.button('Plot Distributions'):
-    plot_distributions()
+# Animated element
+st.subheader('Waiting for prediction...')
+progress_bar = st.progress(0)
+
+# Fake prediction process
+for i in range(101):
+    time.sleep(0.05)
+    progress_bar.progress(i)
 
 # Prediction
 if st.sidebar.button('Diabetes Prediction Test'):
@@ -69,3 +47,10 @@ if st.sidebar.button('Diabetes Prediction Test'):
             st.sidebar.success('The patient has diabetes')
         else:
             st.sidebar.success('The patient does not have diabetes')
+
+# Additional attractive element
+st.subheader('Did you know?')
+st.write('Regular exercise and a balanced diet can help prevent or manage diabetes!')
+
+# Footer
+
