@@ -22,7 +22,8 @@ def predict_diabetes(pregnancies, glucose, blood_pressure, skin_thickness, insul
 # Home page
 def home_page():
     st.title('Diabetes Prediction')
-   
+    st.markdown("""<style>.reportview-container .main .block-container{padding-top: 0rem !important;}</style>""", unsafe_allow_html=True)
+    st.markdown('<h1 style="text-align: center;">Diabetes Prediction</h1>', unsafe_allow_html=True)
     st.sidebar.subheader('Navigation')
     page = st.sidebar.radio('Go to', ['Home', 'Additional Features'])
 
@@ -62,6 +63,25 @@ def additional_features_page():
     st.write('- [American Diabetes Association](https://www.diabetes.org)')
     st.write('- [National Institute of Diabetes and Digestive and Kidney Diseases](https://www.niddk.nih.gov)')
 
+    # Indian Diabetes Information
+    st.subheader('Diabetes in India')
+    st.write('Diabetes is a growing concern in India, with the country being called the "diabetes capital of the world". According to the International Diabetes Federation (IDF), India is home to over 77 million adults with diabetes.')
+
+    # Indian Diet Recommendations
+    st.subheader('Indian Diet Recommendations')
+    st.write('Diet plays a crucial role in managing diabetes. Some dietary recommendations for Indian diabetes patients include:')
+    st.write('- Emphasize whole grains such as brown rice, whole wheat, and millets.')
+    st.write('- Include plenty of fiber-rich foods like fruits, vegetables, and legumes.')
+    st.write('- Limit intake of refined carbohydrates and sugars.')
+    st.write('- Choose healthy fats such as nuts, seeds, and olive oil.')
+
+    # Indian Lifestyle Tips
+    st.subheader('Indian Lifestyle Tips')
+    st.write('In addition to diet, adopting a healthy lifestyle is essential for managing diabetes:')
+    st.write('- Engage in regular physical activity such as walking, yoga, or swimming.')
+    st.write('- Maintain a healthy weight by balancing calorie intake and expenditure.')
+    st.write('- Monitor blood sugar levels regularly and consult healthcare professionals for guidance.')
+
     # User Feedback
     st.subheader('Feedback')
     feedback = st.text_area('Please provide your feedback or comments:')
@@ -76,7 +96,7 @@ def main():
     home_page()
 
     st.sidebar.markdown("---")
- 
+    st.sidebar.write("Developed with ADYPSOE Students")
 
     if st.sidebar.button('Additional Features'):
         additional_features_page()
