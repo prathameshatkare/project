@@ -1,6 +1,7 @@
 import pickle
 import streamlit as st
 import numpy as np
+import pandas as pd
 import time
 
 # Load model
@@ -18,6 +19,11 @@ def predict_diabetes(pregnancies, glucose, blood_pressure, skin_thickness, insul
             return 'The patient has diabetes'
         else:
             return 'The patient does not have diabetes'
+
+# Function to save feedback to a CSV file
+def save_feedback(feedback):
+    feedback_df = pd.DataFrame({'Feedback': [feedback]})
+    feedback_df.to_csv('feedback.csv', mode='a', index=False, header=not st.session_state.feedback_saved)
 
 # Home page
 def home_page():
@@ -86,6 +92,7 @@ def additional_features_page():
     st.subheader('Feedback')
     feedback = st.text_area('Please provide your feedback or comments:')
     if st.button('Submit Feedback'):
+        save_feedback(feedback)
         st.write('Thank you for your feedback!')
 
 # Main function to run the app
@@ -96,7 +103,7 @@ def main():
     home_page()
 
     st.sidebar.markdown("---")
-    st.sidebar.write("Developed with ADYPSOE Students")
+  
 
     if st.sidebar.button('Additional Features'):
         additional_features_page()
