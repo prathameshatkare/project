@@ -9,7 +9,7 @@ model_diabetes = pickle.load(open('model_diabetes.sav', 'rb'))
 
 # Define a function for prediction
 def predict_diabetes(pregnancies, glucose, blood_pressure, skin_thickness, insulin, bmi, diabetes_pedigree_function, age):
-    if pregnancies == 0 or glucose == 0 or blood_pressure == 0 or skin_thickness == 0 or insulin == 0 or bmi == 0.0 or diabetes_pedigree_function == 0.0 or age == 0:
+    if pregnancies == -1 or glucose == 0 or blood_pressure == 0 or skin_thickness == 0 or insulin == 0 or bmi == 0.0 or diabetes_pedigree_function == 0.0 or age == 0:
         return "Please fill in all the fields."
     elif glucose > 200 and blood_pressure > 150:
         return "Please check glucose and blood pressure values, they seem high. Consult a healthcare professional."
