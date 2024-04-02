@@ -40,7 +40,7 @@ def home_page():
         # Input fields with validation
         st.sidebar.subheader('Enter Patient Details')
         with st.sidebar:
-            pregnancies = st.number_input('Pregnancies', min_value=0, max_value=20, step=1)
+            pregnancies = st.number_input('Pregnancies', min_value=0, max_value=20, step=0)
             glucose = st.number_input('Glucose', min_value=0, max_value=300, step=1)
             blood_pressure = st.number_input('Blood Pressure', min_value=0, max_value=200, step=1)
             skin_thickness = st.number_input('Skin Thickness', min_value=0, max_value=100, step=1)
@@ -78,11 +78,11 @@ def additional_features_page():
     st.write('- Early detection and management of diabetes through lifestyle changes, medication, and regular monitoring can help prevent complications.')
 
     # User Feedback
-    st.subheader('Feedback')
-    feedback = st.text_area('Please provide your feedback or comments:')
-    if st.button('Submit Feedback'):
-        save_feedback(feedback)
-        st.write('Thank you for your feedback!')
+    #st.subheader('Feedback')
+    #feedback = st.text_area('Please provide your feedback or comments:')
+    #if st.button('Submit Feedback'):
+        #save_feedback(feedback)
+        #st.write('Thank you for your feedback!')
 
 # Main function to run the app
 def main():
